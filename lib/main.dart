@@ -1,8 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'Pages/Register Page.dart';
 import 'Pages/home.dart';
 import 'Pages/login page.dart';
+import 'firebase_options.dart';
+import 'functionalities/Auth/Login_or_Reg.dart';
+import 'functionalities/Auth/auth.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -12,15 +21,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Bookhub',
-      theme: ThemeData(
-          brightness: Brightness.light,
-      ),
-      darkTheme: ThemeData(brightness: Brightness.dark),
-      themeMode: ThemeMode.dark,
       //home: home(),
-      home: LoginPage(),
+      //home: LoginPage(),
+     // home: RegPage(),
+      //home: Log_or_Reg(),
+      home: AuthPage(),
     );
   }
 }
+/*
+await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+* */
