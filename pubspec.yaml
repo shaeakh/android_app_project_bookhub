@@ -39,10 +39,17 @@ dependencies:
   firebase_core: ^2.20.0
   firebase_auth: ^4.12.1
   google_sign_in: ^6.1.5
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "lib/assets/launch/main_logo.png"
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -65,6 +72,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/LoginPage/
+    - lib/assets/HomePage/NavBar/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
