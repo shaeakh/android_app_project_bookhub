@@ -1,3 +1,4 @@
+import 'package:android_app_project_bookhub/Auth_Services/AuthService.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -164,11 +165,14 @@ class _LoginPage extends State<LoginPage>{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Image.asset(
-                          'lib/assets/LoginPage/google_logo.png',
-                          height: 60,
+                      GestureDetector(
+                        onTap: () => AuthService().signInWithGoogle(),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Image.asset(
+                            'lib/assets/LoginPage/google_logo.png',
+                            height: 60,
+                          ),
                         ),
                       ),
                       Padding(
@@ -215,7 +219,7 @@ class _LoginPage extends State<LoginPage>{
               ),
             ),
           ),
-        )
+        ),
     );
   }
 }

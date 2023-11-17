@@ -43,7 +43,6 @@ class NavBar extends StatelessWidget{
                 image: AssetImage('lib/assets/HomePage/NavBar/BackGroundImage.jpg'),
                 fit: BoxFit.cover,
               ),
-
             ),
           ),
 
@@ -105,6 +104,23 @@ class NavBar extends StatelessWidget{
             leading: Icon(Icons.dashboard),
             title: Text('Dashboard'),
             onTap:  () => null,
+            trailing: ClipOval(
+              child: Container(
+                color: Colors.red,
+                width: 20,
+                height: 20,
+                child: Center(
+                  child: Text(
+                    '8',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+
+                  ),
+                ),
+              ),
+            ),
           ),
 
           ListTile(
