@@ -1,4 +1,5 @@
 import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class PostWiget extends StatefulWidget{
@@ -8,6 +9,21 @@ class PostWiget extends StatefulWidget{
 }
 
 class _PostWiget extends State<PostWiget>{
+  final TextEditingController Username = TextEditingController();
+  final TextEditingController Text = TextEditingController();
+
+  void _Post(){
+
+
+
+    FirebaseFirestore.instance.collection('posts').add({
+      'username': Username.text,
+      'time': ,
+      'value': ,
+      'text': Text.text,
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,6 +53,7 @@ class _PostWiget extends State<PostWiget>{
                 ),
                 Expanded(
                   child: TextField(
+                    controller: Text,
                     decoration: InputDecoration(
                       hintText: 'Sell/Exchange your book',
                       hintStyle: TextStyle(fontSize: 15.0),
@@ -60,7 +77,7 @@ class _PostWiget extends State<PostWiget>{
             ),
             Button(
               text:'Post your sell',
-              onTap: (){},
+              onTap: _Post,
             ),
             SizedBox(
             height: 10,

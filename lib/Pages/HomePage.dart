@@ -1,4 +1,5 @@
 import 'package:android_app_project_bookhub/widgets/HomePage/PostWidget.dart';
+import 'package:android_app_project_bookhub/widgets/HomePage/searchWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class _HomePage extends State<HomePage>{
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
+                Search(),
                 PostWiget(),
                 StatusWiget(),
                 StatusWiget(),

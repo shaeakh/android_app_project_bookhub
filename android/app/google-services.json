@@ -12,7 +12,12 @@
           "package_name": "com.example.android_app_project_bookhub"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "121988994607-o3inf83ctmnkg0ct86uje3qpohcv660t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBR4thSSXIok_U0mYAnys-diaecUEpmueI"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121988994607-o3inf83ctmnkg0ct86uje3qpohcv660t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -63,19 +63,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyApoN0DirW4Sf6_TVheLHNXKy1Le_4t0pk',
-    appId: '1:121988994607:ios:594962b29a68bd61bd18da',
+    appId: '1:121988994607:ios:384c9e2359692128bd18da',
     messagingSenderId: '121988994607',
     projectId: 'bookhub-8e48c',
     storageBucket: 'bookhub-8e48c.appspot.com',
+    iosClientId: '121988994607-9etumo0sig01etpqqvi8ru083nhusclb.apps.googleusercontent.com',
     iosBundleId: 'com.example.androidAppProjectBookhub',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyApoN0DirW4Sf6_TVheLHNXKy1Le_4t0pk',
-    appId: '1:121988994607:ios:b158f4515fc7f444bd18da',
+    appId: '1:121988994607:ios:706740f302faf228bd18da',
     messagingSenderId: '121988994607',
     projectId: 'bookhub-8e48c',
     storageBucket: 'bookhub-8e48c.appspot.com',
+    iosClientId: '121988994607-qt61afag56uoocpbtffnnckpfbum2idg.apps.googleusercontent.com',
     iosBundleId: 'com.example.androidAppProjectBookhub.RunnerTests',
   );
 }
