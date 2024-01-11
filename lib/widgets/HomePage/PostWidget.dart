@@ -1,6 +1,5 @@
 import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 class PostWiget extends StatefulWidget{
   const PostWiget({super.key});
@@ -9,19 +8,9 @@ class PostWiget extends StatefulWidget{
 }
 
 class _PostWiget extends State<PostWiget>{
-  final TextEditingController Username = TextEditingController();
-  final TextEditingController Text = TextEditingController();
 
-  void _Post(){
+  void _pickFile(){
 
-
-
-    FirebaseFirestore.instance.collection('posts').add({
-      'username': Username.text,
-      'time': ,
-      'value': ,
-      'text': Text.text,
-    });
   }
 
   @override
@@ -37,50 +26,99 @@ class _PostWiget extends State<PostWiget>{
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
+            Container(
+              margin: EdgeInsets.all(15.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Title',
+                  hintStyle: TextStyle(
+                    fontSize: 15.0,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  focusedBorder:  OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xfff10d76)),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Value',
+                  hintStyle: TextStyle(
+                    fontSize: 15.0,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  focusedBorder:  OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xfff10d76)),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
+            ),
 
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child : ClipOval(
-                    child: Image.network(
-                      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600',
-                      width: 55,
-                      height: 55,
-                      fit: BoxFit.cover,
+            Container(
+              margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
+              child: TextField(
+                textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    hintText: 'Explain Your Statement',
+                    hintStyle: TextStyle(
+                        fontSize: 15.0,
                     ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder:  OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xfff10d76)),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 10.0), // Adjust padding as needed
                   ),
                 ),
-                Expanded(
-                  child: TextField(
-                    controller: Text,
-                    decoration: InputDecoration(
-                      hintText: 'Sell/Exchange your book',
-                      hintStyle: TextStyle(fontSize: 15.0),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder:  OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xfff10d76)),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
+              ),
+            InkWell(
+              onTap: _pickFile,
+              child: Container(
+                margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
+                padding: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(color: Color(0xfff10d76)), // Outline color
+
                 ),
-                SizedBox(width: 16.0),
-                Icon(Icons.attach_file),
-                SizedBox(width: 16.0),
-                Icon(Icons.image),
-                SizedBox(width: 16.0),
-              ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Add Photo'),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Icon(
+                      Icons.photo, // Replace with the desired icon
+                      size: 30.0, // Adjust the size of the icon
+                      color: Color(0xfff10d76), // Icon color
+                    ),
+
+                  ],
+                )
+              ),
             ),
-            Button(
-              text:'Post your sell',
-              onTap: _Post,
-            ),
-            SizedBox(
-            height: 10,
+            Container(
+              margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
+              child: Button(
+                text:'Post your sell',
+                onTap: (){},
+              ),
             ),
           ],
         ),
