@@ -16,6 +16,7 @@ class _PostWiget extends State<PostWiget>{
   @override
   Widget build(BuildContext context) {
     return Container(
+
       margin: EdgeInsets.all(10),
 
       decoration: BoxDecoration(
@@ -117,7 +118,9 @@ class _PostWiget extends State<PostWiget>{
               margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
               child: Button(
                 text:'Post your sell',
-                onTap: (){},
+                onTap: (){
+                  Navigator.pop(context);
+                },
               ),
             ),
           ],

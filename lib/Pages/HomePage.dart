@@ -1,16 +1,15 @@
-import 'package:android_app_project_bookhub/widgets/HomePage/PostWidget.dart';
+import 'package:android_app_project_bookhub/widgets/HomePage/Bids.dart';
+
 import 'package:android_app_project_bookhub/widgets/HomePage/searchWidget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:android_app_project_bookhub/widgets/HomePage/NavBar.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../Auth_Services/AuthService.dart';
-import '../widgets/HomePage/Button.dart';
+import '../widgets/HomePage/BidList.dart';
+import '../widgets/HomePage/PostLinkWidget.dart';
 import '../widgets/HomePage/StatusWidget.dart';
-import '../widgets/HomePage/txtfield.dart';
-import 'ForgetPass.dart';
+
 
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
@@ -24,8 +23,6 @@ class HomePage extends StatefulWidget{
 class _HomePage extends State<HomePage>{
   @override
   Widget build(BuildContext context) {
-    var EmailTxt;
-    var PassTxt;
     return Scaffold(
       backgroundColor: Color(0xffe4e5e7) ,
       drawer: NavBar(),
@@ -40,7 +37,8 @@ class _HomePage extends State<HomePage>{
             child: Column(
               children: [
                 Search(),
-                PostWiget(),
+                PostLinkWiget(),
+                //BidList(),
                 StatusWiget(),
                 StatusWiget(),
                 StatusWiget(),

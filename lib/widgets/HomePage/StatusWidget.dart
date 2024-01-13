@@ -1,3 +1,4 @@
+import 'package:android_app_project_bookhub/widgets/HomePage/BidList.dart';
 import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +79,26 @@ class _StatusWiget extends State<StatusWiget>{
                 ],
               ),
             ),
-
+            Container(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                child: GestureDetector(
+                      onTap: (){
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext){
+                            return BidList();
+                          },
+                        );
+                      },
+                      child: Text(
+                        'See Others Bid',
+                        textAlign: TextAlign.left,
+                      ),
+                  ),
+                padding: EdgeInsets.fromLTRB(16,0,16,10),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.fromLTRB(16,0,16,10),
               child: Row(

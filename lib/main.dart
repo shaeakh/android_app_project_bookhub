@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Bookhub',
+      debugShowCheckedModeBanner: false,
       //home: home(),
       //home: LoginPage(),
      // home: RegPage(),
