@@ -3,7 +3,7 @@ import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'BidButton.dart';
+import 'MsgButton.dart';
 class StatusWiget extends StatefulWidget{
   const StatusWiget({super.key});
   @override
@@ -33,8 +33,8 @@ class _StatusWiget extends State<StatusWiget>{
                   child : ClipOval(
                     child: Image.network(
                       'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600',
-                      width: 55,
-                      height: 55,
+                      width: 60,
+                      height: 60,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -50,14 +50,25 @@ class _StatusWiget extends State<StatusWiget>{
                         fontSize: 18,
                       ),
                     ),
-                    SizedBox( height: 2 ),
+
+                    Text(
+                      "Status Date",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     Text(
                       "Status Time",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox( height: 20, ),
+                    Text("5\$ ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -66,6 +77,8 @@ class _StatusWiget extends State<StatusWiget>{
               padding: EdgeInsets.fromLTRB(16,0,16,0),
               child: Column(
                 children: [
+
+                  SizedBox(height: 10,),
                   Text("Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a"),
                   SizedBox( height:  10),
                   ClipRRect(
@@ -119,7 +132,14 @@ class _StatusWiget extends State<StatusWiget>{
                       ),
                     ),
                   ),
-                  BidButton(),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Button(
+                    text: 'Bid',
+                    onTap: () {  },
+                  ),
+                  MsgButton(),
                 ],
               ),
 

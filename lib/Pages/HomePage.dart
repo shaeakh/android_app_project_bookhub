@@ -27,7 +27,13 @@ class _HomePage extends State<HomePage>{
       backgroundColor: Color(0xffe4e5e7) ,
       drawer: NavBar(),
       appBar: AppBar(
-        title: Text("The wall"),
+        title: Text(
+            "The wall",
+            style: TextStyle(
+            color: Colors.white,
+              fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Color(0xfff10d76),
       ),

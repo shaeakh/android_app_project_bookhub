@@ -1,6 +1,10 @@
 import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+
 class PostWiget extends StatefulWidget{
   const PostWiget({super.key});
   @override
@@ -8,12 +12,59 @@ class PostWiget extends StatefulWidget{
 }
 
 class _PostWiget extends State<PostWiget>{
+  final TextEditingController title = TextEditingController();
+  final TextEditingController value = TextEditingController();
+  final TextEditingController statement = TextEditingController();
+  late String imgUrl;
 
-  void _pickFile(){
 
+  Future<void> _pickImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        imgUrl = pickedFile.path;
+      });
+    }
+  }
+
+  //getting username section
+  String? email = FirebaseAuth.instance.currentUser?.email;
+
+  Future<String?> getUsernameFromEmail(String email) async {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    QuerySnapshot querySnapshot = await users.where('email', isEqualTo: email).get();
+    if (querySnapshot.docs.isNotEmpty) {
+      String username = querySnapshot.docs[0].get('username');
+      return username;
+    } else {
+      return null;
+    }
+  }
+
+
+
+  Future<void> post(String Username,String Title, String Value, String Statement) async {
+      String? Username = await getUsernameFromEmail(email!);
+      FirebaseFirestore.instance.collection('Status').add({
+        'Username' : Username,
+        'time' : Timestamp.now(),
+        'value': Value,
+        'title' : Title,
+        'statement' : Statement,
+        'imgUrl' : imgUrl,
+      });
+      //other text clear section
+      value.clear();
+      title.clear();
+      statement.clear();
   }
 
   @override
+  void initState() {
+    super.initState();
+    imgUrl = ''; // Initialize with an empty string
+  }
   Widget build(BuildContext context) {
     return Container(
 
@@ -30,6 +81,7 @@ class _PostWiget extends State<PostWiget>{
             Container(
               margin: EdgeInsets.all(15.0),
               child: TextField(
+                controller: title,
                 decoration: InputDecoration(
                   hintText: 'Title',
                   hintStyle: TextStyle(
@@ -49,6 +101,7 @@ class _PostWiget extends State<PostWiget>{
             Container(
               margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
               child: TextField(
+                controller: value,
                 decoration: InputDecoration(
                   hintText: 'Value',
                   hintStyle: TextStyle(
@@ -69,6 +122,7 @@ class _PostWiget extends State<PostWiget>{
             Container(
               margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
               child: TextField(
+                controller: statement,
                 textAlign: TextAlign.center,
                   decoration: InputDecoration(
                     hintText: 'Explain Your Statement',
@@ -88,7 +142,7 @@ class _PostWiget extends State<PostWiget>{
                 ),
               ),
             InkWell(
-              onTap: _pickFile,
+              onTap: _pickImage,
               child: Container(
                 margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
                 padding: EdgeInsets.all(8.0),
@@ -114,11 +168,14 @@ class _PostWiget extends State<PostWiget>{
                 )
               ),
             ),
+            imgUrl.isNotEmpty? Image.file(File(imgUrl), height: 100): Container(),
+            SizedBox(height: 15,),
             Container(
               margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
               child: Button(
                 text:'Post your sell',
                 onTap: (){
+                  post('abc',title.text,value.text+' \$' ,statement.text);
                   Navigator.pop(context);
                 },
               ),

@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../Pages/Chat_Page.dart';
+
 class NavBar extends StatelessWidget{
   const NavBar({super.key});
   void signOut(){
@@ -58,7 +60,12 @@ class NavBar extends StatelessWidget{
           ListTile(
             leading: Icon(Icons.message),
             title: Text('Messages'),
-            onTap:  () => null,
+            onTap:  (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChatScreen()),
+              );
+            },
             trailing: ClipOval(
               child: Container(
                 color: Colors.red,

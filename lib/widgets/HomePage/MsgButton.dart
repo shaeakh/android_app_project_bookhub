@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class BidButton extends StatelessWidget{
+class MsgButton extends StatelessWidget{
 
 
-  const BidButton({
+  const MsgButton({
     super.key
   });
 

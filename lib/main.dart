@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'Pages/Chat_Page.dart';
 import 'Pages/Register Page.dart';
 import 'Pages/home.dart';
 import 'Pages/login page.dart';
@@ -25,11 +26,13 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Bookhub',
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
       //home: home(),
       //home: LoginPage(),
      // home: RegPage(),
       //home: Log_or_Reg(),
       home: AuthPage(),
+      //home: ChatPage(receiverUserEmail: 'Shaeakh12@gmail.com', receiverUserID: '123',),
     );
   }
 }
