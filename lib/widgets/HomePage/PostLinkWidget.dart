@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
 import 'package:android_app_project_bookhub/widgets/HomePage/PostWidget.dart';
 import 'package:flutter/material.dart';
@@ -27,11 +29,11 @@ class _PostLinkWiget extends State<PostLinkWiget>{
                 Padding(
                   padding: EdgeInsets.all(16),
                   child : ClipOval(
-                    child: Image.network(
-                      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600',
-                      width: 55,
-                      height: 55,
-                      fit: BoxFit.cover,
+                    child: Image.file(
+                      File('/data/user/0/com.example.android_app_project_bookhub/cache/10abb823-7a12-4c68-ad81-f59ec10f8edf/Shaeakh.jpg'),
+                        width: 55,
+                        height: 55,
+                        fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -73,12 +75,7 @@ class _PostLinkWiget extends State<PostLinkWiget>{
         ),
       ),
       onTap: (){
-        showModalBottomSheet(
-            context: context,
-            builder: (BuildContext){
-              return PostWiget();
-            },
-        );
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const PostWiget()) );
       },
     );
   }

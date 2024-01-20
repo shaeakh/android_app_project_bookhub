@@ -32,6 +32,7 @@ class _Timeline extends State<Timeline>{
               chatDocs?[index]['time'],
               chatDocs?[index]['title'],
               chatDocs?[index]['value'],
+                chatDocs?[index]['UserImgUrl']
             ),
           );
         },

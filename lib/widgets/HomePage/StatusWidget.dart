@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:android_app_project_bookhub/widgets/HomePage/BidList.dart';
 import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
 import 'package:android_app_project_bookhub/widgets/HomePage/MsgButton.dart';
@@ -7,7 +9,8 @@ import 'package:intl/intl.dart';
 class StatusWiget extends StatelessWidget{
 
 
-  StatusWiget(this.Username, this.imgUrl, this.statement,this.time,this.title,this.value);
+  StatusWiget(this.Username, this.imgUrl, this.statement,this.time,this.title,this.value, this.UserImgUrl);
+  final String UserImgUrl;
   final String Username;
   final String imgUrl;
   final String statement;
@@ -33,12 +36,18 @@ class StatusWiget extends StatelessWidget{
                 Padding(
                   padding: EdgeInsets.all(16),
                   child : ClipOval(
-                    child: Image.network(
-                      'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600',
+                    child: Image.file(
+                      File(UserImgUrl),
                       width: 60,
                       height: 60,
                       fit: BoxFit.cover,
                     ),
+                    // child: Image.network(
+                    //   'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600',
+                    //   width: 60,
+                    //   height: 60,
+                    //   fit: BoxFit.cover,
+                    // ),
                   ),
                 ),
                 Column(
@@ -84,8 +93,8 @@ class StatusWiget extends StatelessWidget{
                   SizedBox( height:  10),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image(
-                      image: AssetImage('lib/assets/HomePage/Sample Book.jpg'),
+                    child: Image.file(
+                      File(imgUrl),
                     ),
                   ),
                   SizedBox( height: 10),

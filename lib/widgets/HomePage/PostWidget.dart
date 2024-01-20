@@ -53,6 +53,7 @@ class _PostWiget extends State<PostWiget>{
         'title' : Title,
         'statement' : Statement,
         'imgUrl' : imgUrl,
+        'UserImgUrl' : '/data/user/0/com.example.android_app_project_bookhub/cache/10abb823-7a12-4c68-ad81-f59ec10f8edf/Shaeakh.jpg'
       });
       //other text clear section
       value.clear();
@@ -66,68 +67,77 @@ class _PostWiget extends State<PostWiget>{
     imgUrl = ''; // Initialize with an empty string
   }
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_sharp),
+          onPressed: () {
 
-      margin: EdgeInsets.all(10),
-
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+          },
+        ),
       ),
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.all(15.0),
-              child: TextField(
-                controller: title,
-                decoration: InputDecoration(
-                  hintText: 'Title',
-                  hintStyle: TextStyle(
-                    fontSize: 15.0,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade400),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  focusedBorder:  OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xfff10d76)),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
-              child: TextField(
-                controller: value,
-                decoration: InputDecoration(
-                  hintText: 'Value',
-                  hintStyle: TextStyle(
-                    fontSize: 15.0,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade400),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  focusedBorder:  OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xfff10d76)),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
+      body: Container(
 
-            Container(
-              margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
-              child: TextField(
-                controller: statement,
-                textAlign: TextAlign.center,
+        margin: EdgeInsets.all(10),
+
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.all(15.0),
+                child: TextField(
+                  controller: title,
+                  decoration: InputDecoration(
+                    hintText: 'Title',
+                    hintStyle: TextStyle(
+                      fontSize: 15.0,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder:  OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xfff10d76)),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
+                child: TextField(
+                  controller: value,
+                  decoration: InputDecoration(
+                    hintText: 'Value',
+                    hintStyle: TextStyle(
+                      fontSize: 15.0,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    focusedBorder:  OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xfff10d76)),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ),
+              ),
+
+              Container(
+                margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
+                child: TextField(
+                  controller: statement,
+                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
                     hintText: 'Explain Your Statement',
                     hintStyle: TextStyle(
-                        fontSize: 15.0,
+                      fontSize: 15.0,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey.shade400),
@@ -141,46 +151,47 @@ class _PostWiget extends State<PostWiget>{
                   ),
                 ),
               ),
-            InkWell(
-              onTap: _pickImage,
-              child: Container(
-                margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
-                padding: EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  border: Border.all(color: Color(0xfff10d76)), // Outline color
+              InkWell(
+                onTap: _pickImage,
+                child: Container(
+                    margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
+                    padding: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(color: Color(0xfff10d76)), // Outline color
 
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Add Photo'),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Icon(
+                          Icons.photo, // Replace with the desired icon
+                          size: 30.0, // Adjust the size of the icon
+                          color: Color(0xfff10d76), // Icon color
+                        ),
+
+                      ],
+                    )
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Add Photo'),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Icon(
-                      Icons.photo, // Replace with the desired icon
-                      size: 30.0, // Adjust the size of the icon
-                      color: Color(0xfff10d76), // Icon color
-                    ),
-
-                  ],
-                )
               ),
-            ),
-            imgUrl.isNotEmpty? Image.file(File(imgUrl), height: 100): Container(),
-            SizedBox(height: 15,),
-            Container(
-              margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
-              child: Button(
-                text:'Post your sell',
-                onTap: (){
-                  post(title.text,value.text+' \$' ,statement.text);
-                  Navigator.pop(context);
-                },
+              imgUrl.isNotEmpty? Image.file(File(imgUrl), height: 100): Container(),
+              SizedBox(height: 15,),
+              Container(
+                margin: EdgeInsets.fromLTRB(15.0,0.0,15.0,15.0),
+                child: Button(
+                  text:'Post your sell',
+                  onTap: (){
+                    post(title.text,value.text+' \$' ,statement.text);
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

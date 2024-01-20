@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:android_app_project_bookhub/Pages/Profile.dart';
+import 'package:android_app_project_bookhub/widgets/Chat/messeges.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../Pages/Chat_Page.dart';
+import '../../Pages/msg.dart';
 import '../../Pages/settings.dart';
 class NavBar extends StatefulWidget{
   const NavBar({super.key});
@@ -39,11 +43,11 @@ class _NavBar extends State<NavBar>{
             ),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                child: Image.network(
-                  'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600',
-                  width: 90,
-                  height: 90,
-                  fit: BoxFit.cover,
+                child: Image.file(
+                  File('/data/user/0/com.example.android_app_project_bookhub/cache/10abb823-7a12-4c68-ad81-f59ec10f8edf/Shaeakh.jpg'),
+                    width: 90,
+                    height: 90,
+                    fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -71,10 +75,7 @@ class _NavBar extends State<NavBar>{
             leading: Icon(Icons.message),
             title: Text('Messages'),
             onTap:  (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ChatScreen()),
-              );
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  MessagePage()) );
             },
             trailing: ClipOval(
               child: Container(
@@ -83,7 +84,7 @@ class _NavBar extends State<NavBar>{
                 height: 20,
                 child: Center(
                   child: Text(
-                    '8',
+                    '3',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,
