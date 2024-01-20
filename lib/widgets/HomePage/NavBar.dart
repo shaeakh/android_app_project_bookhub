@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../Pages/Chat_Page.dart';
+import '../../Pages/settings.dart';
 class NavBar extends StatefulWidget{
   const NavBar({super.key});
   @override
@@ -108,7 +109,9 @@ class _NavBar extends State<NavBar>{
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap:  () => null,
+            onTap:  (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>SettingsPage()) );
+            },
           ),
 
 

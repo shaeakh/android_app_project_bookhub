@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       //home: Log_or_Reg(),
       //home: Profile(),
       home: AuthPage(),
+      //home: SettingsScreen(),
       //home: ChatPage(receiverUserEmail: 'Shaeakh12@gmail.com', receiverUserID: '123',),
     );
   }
