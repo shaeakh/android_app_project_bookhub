@@ -1,6 +1,7 @@
 import 'package:android_app_project_bookhub/Pages/Profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../Pages/Chat_Page.dart';
 class NavBar extends StatefulWidget{
@@ -15,7 +16,7 @@ class _NavBar extends State<NavBar>{
   }
 
   //getting username section
-  String? email = FirebaseAuth.instance.currentUser?.email;
+  String? email = FirebaseAuth.instance.currentUser?.email ?? 'Guest';
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -97,7 +98,10 @@ class _NavBar extends State<NavBar>{
           ListTile(
             leading: Icon(Icons.share),
             title: Text('Share'),
-            onTap:  () => null,
+            onTap:  () async {
+              final url = 'https://github.com/shaeakh/android_app_project_bookhub';
+                await Share.share('Hello there, You can contribute our app here \n\n$url');
+            },
           ),
 
 

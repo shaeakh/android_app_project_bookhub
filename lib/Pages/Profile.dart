@@ -33,7 +33,9 @@ class _Profile extends State<Profile>{
         padding: EdgeInsets.zero,
         children:<Widget> [
           buildtop(),
-          buildContent(),
+          Center(
+            child: buildContent(),
+          ),
           ProfileCng(data: 'Name',),
           ProfileCng(data: 'Email',),
         ],
@@ -50,6 +52,7 @@ class _Profile extends State<Profile>{
             fontSize: 28,
               fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
         Container(
           margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
