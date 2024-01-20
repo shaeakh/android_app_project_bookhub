@@ -1,3 +1,4 @@
+import 'package:android_app_project_bookhub/Pages/Profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Pages/Chat_Page.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
       //home: LoginPage(),
      // home: RegPage(),
       //home: Log_or_Reg(),
-      home: AuthPage(),
+      home: Profile(),
+      //home: AuthPage(),
       //home: ChatPage(receiverUserEmail: 'Shaeakh12@gmail.com', receiverUserID: '123',),
     );
   }

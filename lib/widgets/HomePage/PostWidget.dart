@@ -44,9 +44,9 @@ class _PostWiget extends State<PostWiget>{
 
 
 
-  Future<void> post(String Username,String Title, String Value, String Statement) async {
+  Future<void> post(String Title, String Value, String Statement) async {
       String? Username = await getUsernameFromEmail(email!);
-      FirebaseFirestore.instance.collection('Status').add({
+      FirebaseFirestore.instance.collection('status').add({
         'Username' : Username,
         'time' : Timestamp.now(),
         'value': Value,
@@ -175,7 +175,7 @@ class _PostWiget extends State<PostWiget>{
               child: Button(
                 text:'Post your sell',
                 onTap: (){
-                  post('abc',title.text,value.text+' \$' ,statement.text);
+                  post(title.text,value.text+' \$' ,statement.text);
                   Navigator.pop(context);
                 },
               ),

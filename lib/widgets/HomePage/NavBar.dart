@@ -1,15 +1,21 @@
+import 'package:android_app_project_bookhub/Pages/Profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 import '../../Pages/Chat_Page.dart';
-
-class NavBar extends StatelessWidget{
+class NavBar extends StatefulWidget{
   const NavBar({super.key});
+  @override
+  State<NavBar> createState() => _NavBar();
+}
+
+class _NavBar extends State<NavBar>{
   void signOut(){
     FirebaseAuth.instance.signOut();
   }
 
+  //getting username section
+  String? email = FirebaseAuth.instance.currentUser?.email;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -17,18 +23,18 @@ class NavBar extends StatelessWidget{
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-              accountName: Text(
-                  'Shaeakh Ahmed Chowdhury',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+            accountName: Text(
+              '',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
               ),
-              accountEmail: Text(
-                  'Shaeakh12@gmail.com',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            accountEmail: Text(
+              email!,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
               ),
+            ),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
@@ -53,7 +59,9 @@ class NavBar extends StatelessWidget{
           ListTile(
             leading: Icon(Icons.person),
             title: Text('Profile'),
-            onTap:  () => null,
+            onTap:  (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()) );
+            },
           ),
 
 
@@ -104,30 +112,6 @@ class NavBar extends StatelessWidget{
             leading: Icon(Icons.policy),
             title: Text('Policies'),
             onTap:  () => null,
-          ),
-
-
-          ListTile(
-            leading: Icon(Icons.dashboard),
-            title: Text('Dashboard'),
-            onTap:  () => null,
-            trailing: ClipOval(
-              child: Container(
-                color: Colors.red,
-                width: 20,
-                height: 20,
-                child: Center(
-                  child: Text(
-                    '8',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    ),
-
-                  ),
-                ),
-              ),
-            ),
           ),
 
           ListTile(

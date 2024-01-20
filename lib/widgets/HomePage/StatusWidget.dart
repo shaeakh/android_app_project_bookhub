@@ -1,20 +1,22 @@
 import 'package:android_app_project_bookhub/widgets/HomePage/BidList.dart';
 import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:android_app_project_bookhub/widgets/HomePage/MsgButton.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+class StatusWiget extends StatelessWidget{
 
-import 'MsgButton.dart';
-class StatusWiget extends StatefulWidget{
-  const StatusWiget({super.key});
-  @override
-  State<StatusWiget> createState() => _StatusWiget();
-}
 
-class _StatusWiget extends State<StatusWiget>{
+  StatusWiget(this.Username, this.imgUrl, this.statement,this.time,this.title,this.value);
+  final String Username;
+  final String imgUrl;
+  final String statement;
+  final Timestamp time;
+  final String title;
+  final String value;
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       margin: EdgeInsets.all(10),
 
@@ -44,7 +46,7 @@ class _StatusWiget extends State<StatusWiget>{
                   children: [
                     SizedBox( height: 6 ),
                     Text(
-                        "Users Name",
+                      Username,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -52,18 +54,18 @@ class _StatusWiget extends State<StatusWiget>{
                     ),
 
                     Text(
-                      "Status Date",
+                        time.toDate().hour.toString()+':'+time.toDate().minute.toString()+' . '+DateFormat('dd MMM yyyy').format(time.toDate()),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      "Status Time",
+                    Text(title,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontSize: 20,
                       ),
                     ),
-                    Text("5\$ ",
+                    Text(value,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -77,9 +79,8 @@ class _StatusWiget extends State<StatusWiget>{
               padding: EdgeInsets.fromLTRB(16,0,16,0),
               child: Column(
                 children: [
-
                   SizedBox(height: 10,),
-                  Text("Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a"),
+                  Text(statement),
                   SizedBox( height:  10),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
@@ -96,19 +97,19 @@ class _StatusWiget extends State<StatusWiget>{
               alignment: Alignment.topLeft,
               child: Padding(
                 child: GestureDetector(
-                      onTap: (){
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (BuildContext){
-                            return BidList();
-                          },
-                        );
+                  onTap: (){
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext){
+                        return BidList();
                       },
-                      child: Text(
-                        'See Others Bid',
-                        textAlign: TextAlign.left,
-                      ),
+                    );
+                  },
+                  child: Text(
+                    'See Others Bid',
+                    textAlign: TextAlign.left,
                   ),
+                ),
                 padding: EdgeInsets.fromLTRB(16,0,16,10),
               ),
             ),
@@ -149,4 +150,5 @@ class _StatusWiget extends State<StatusWiget>{
       ),
     );
   }
+
 }
