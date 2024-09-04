@@ -44,8 +44,12 @@ class _PostWiget extends State<PostWiget>{
 
 
 
+
+
   Future<void> post(String Title, String Value, String Statement) async {
       String? Username = await getUsernameFromEmail(email!);
+
+
       FirebaseFirestore.instance.collection('status').add({
         'Username' : Username,
         'time' : Timestamp.now(),
@@ -53,8 +57,10 @@ class _PostWiget extends State<PostWiget>{
         'title' : Title,
         'statement' : Statement,
         'imgUrl' : imgUrl,
-        'UserImgUrl' : '/data/user/0/com.example.android_app_project_bookhub/cache/10abb823-7a12-4c68-ad81-f59ec10f8edf/Shaeakh.jpg'
+        'UserImgUrl' : "",
       });
+      print("---------------------------------------------------------------------");
+
       //other text clear section
       value.clear();
       title.clear();
@@ -72,7 +78,7 @@ class _PostWiget extends State<PostWiget>{
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_sharp),
           onPressed: () {
-
+            Navigator.pop(context);
           },
         ),
       ),

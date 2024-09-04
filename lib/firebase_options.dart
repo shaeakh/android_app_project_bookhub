@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -44,40 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDZ1etVwkK46i0LXUHKapMEr-oZdyRVneo',
-    appId: '1:121988994607:web:f62f0e7dbd8758b2bd18da',
-    messagingSenderId: '121988994607',
-    projectId: 'bookhub-8e48c',
-    authDomain: 'bookhub-8e48c.firebaseapp.com',
-    storageBucket: 'bookhub-8e48c.appspot.com',
-    measurementId: 'G-VWKQWL16JW',
+    apiKey: 'AIzaSyA2qU3f878Aapmv8Tt8gjo5GRZ3K74f2oE',
+    appId: '1:278297422991:web:3090f14e83bb319435d4fa',
+    messagingSenderId: '278297422991',
+    projectId: 'bookhub-7a6bc',
+    authDomain: 'bookhub-7a6bc.firebaseapp.com',
+    storageBucket: 'bookhub-7a6bc.appspot.com',
+    measurementId: 'G-LPG2Q7W8ZS',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBR4thSSXIok_U0mYAnys-diaecUEpmueI',
-    appId: '1:121988994607:android:0f5660bc7ebb8e30bd18da',
-    messagingSenderId: '121988994607',
-    projectId: 'bookhub-8e48c',
-    storageBucket: 'bookhub-8e48c.appspot.com',
+    apiKey: 'AIzaSyBFHUY1PW6q_1WDeRxqfuaLNrr0W3ea14A',
+    appId: '1:278297422991:android:6ea97758d554d35e35d4fa',
+    messagingSenderId: '278297422991',
+    projectId: 'bookhub-7a6bc',
+    storageBucket: 'bookhub-7a6bc.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyApoN0DirW4Sf6_TVheLHNXKy1Le_4t0pk',
-    appId: '1:121988994607:ios:384c9e2359692128bd18da',
-    messagingSenderId: '121988994607',
-    projectId: 'bookhub-8e48c',
-    storageBucket: 'bookhub-8e48c.appspot.com',
-    iosClientId: '121988994607-9etumo0sig01etpqqvi8ru083nhusclb.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCPZGkuHUOfAgNyvMIId7UQz8UgkJPA62g',
+    appId: '1:278297422991:ios:029fb0dd7f3717c535d4fa',
+    messagingSenderId: '278297422991',
+    projectId: 'bookhub-7a6bc',
+    storageBucket: 'bookhub-7a6bc.appspot.com',
     iosBundleId: 'com.example.androidAppProjectBookhub',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyApoN0DirW4Sf6_TVheLHNXKy1Le_4t0pk',
-    appId: '1:121988994607:ios:706740f302faf228bd18da',
-    messagingSenderId: '121988994607',
-    projectId: 'bookhub-8e48c',
-    storageBucket: 'bookhub-8e48c.appspot.com',
-    iosClientId: '121988994607-qt61afag56uoocpbtffnnckpfbum2idg.apps.googleusercontent.com',
-    iosBundleId: 'com.example.androidAppProjectBookhub.RunnerTests',
+    apiKey: 'AIzaSyCPZGkuHUOfAgNyvMIId7UQz8UgkJPA62g',
+    appId: '1:278297422991:ios:029fb0dd7f3717c535d4fa',
+    messagingSenderId: '278297422991',
+    projectId: 'bookhub-7a6bc',
+    storageBucket: 'bookhub-7a6bc.appspot.com',
+    iosBundleId: 'com.example.androidAppProjectBookhub',
   );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyA2qU3f878Aapmv8Tt8gjo5GRZ3K74f2oE',
+    appId: '1:278297422991:web:6b6cb477684d96ee35d4fa',
+    messagingSenderId: '278297422991',
+    projectId: 'bookhub-7a6bc',
+    authDomain: 'bookhub-7a6bc.firebaseapp.com',
+    storageBucket: 'bookhub-7a6bc.appspot.com',
+    measurementId: 'G-479GL04DMS',
+  );
+
 }

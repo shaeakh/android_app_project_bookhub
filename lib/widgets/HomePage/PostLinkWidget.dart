@@ -26,30 +26,23 @@ class _PostLinkWiget extends State<PostLinkWiget>{
 
             Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child : ClipOval(
-                    child: Image.file(
-                      File('/data/user/0/com.example.android_app_project_bookhub/cache/10abb823-7a12-4c68-ad81-f59ec10f8edf/Shaeakh.jpg'),
-                        width: 55,
-                        height: 55,
-                        fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                
                 Expanded (
-                  child: TextField(
+                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    child: TextField(
 
-                    decoration: InputDecoration(
-                      hintText: 'Sell/Exchange your book',
-                      hintStyle: TextStyle(fontSize: 15.0),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder:  OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xfff10d76)),
-                        borderRadius: BorderRadius.circular(10.0),
+                      decoration: InputDecoration(
+                        hintText: 'Sell/Exchange your book',
+                        hintStyle: TextStyle(fontSize: 15.0),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey.shade400),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        focusedBorder:  OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xfff10d76)),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                       ),
                     ),
                   ),

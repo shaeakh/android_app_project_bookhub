@@ -1,15 +1,12 @@
 import 'dart:io';
-
 import 'package:android_app_project_bookhub/widgets/HomePage/BidList.dart';
 import 'package:android_app_project_bookhub/widgets/HomePage/Button.dart';
 import 'package:android_app_project_bookhub/widgets/HomePage/MsgButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-class StatusWiget extends StatelessWidget{
 
-
-  StatusWiget(this.Username, this.imgUrl, this.statement,this.time,this.title,this.value, this.UserImgUrl);
+class StatusWiget extends StatelessWidget {
   final String UserImgUrl;
   final String Username;
   final String imgUrl;
@@ -18,146 +15,146 @@ class StatusWiget extends StatelessWidget{
   final String title;
   final String value;
 
+  StatusWiget(
+      this.Username, this.imgUrl, this.statement, this.time, this.title, this.value, this.UserImgUrl);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
-
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // User Info Row
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child : ClipOval(
-                    child: Image.file(
-                      File(UserImgUrl),
-                      width: 60,
-                      height: 60,
-                      fit: BoxFit.cover,
-                    ),
-                    // child: Image.network(
-                    //   'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600',
-                    //   width: 60,
-                    //   height: 60,
-                    //   fit: BoxFit.cover,
-                    // ),
-                  ),
+                ClipOval(
+                  child: Image.network(
+                    'https://static.vecteezy.com/system/resources/thumbnails/010/260/479/small_2x/default-avatar-profile-icon-of-social-media-user-in-clipart-style-vector.jpg',
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                  )
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox( height: 6 ),
-                    Text(
-                      Username,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                SizedBox(width: 10), // Add spacing between image and text
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        Username,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
-                    ),
-
-                    Text(
-                        time.toDate().hour.toString()+':'+time.toDate().minute.toString()+' . '+DateFormat('dd MMM yyyy').format(time.toDate()),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                      Text(
+                        '${time.toDate().hour}:${time.toDate().minute} . ${DateFormat('dd MMM yyyy').format(time.toDate())}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Text(title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    Text(value,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                      Text(
+                        value,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16,0,16,0),
-              child: Column(
-                children: [
-                  SizedBox(height: 10,),
-                  Text(statement),
-                  SizedBox( height:  10),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.file(
-                      File(imgUrl),
-                    ),
+          ),
+          // Statement and Image
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 10),
+                Text(statement),
+                SizedBox(height: 10),
+                imgUrl.isNotEmpty
+                    ? ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.file(
+                    File(imgUrl),
+                    fit: BoxFit.cover, // Ensure image fits well
                   ),
-                  SizedBox( height: 10),
-
-                ],
-              ),
+                )
+                    : Container(), // Empty container if imgUrl is empty
+                SizedBox(height: 10),
+              ],
             ),
-            Container(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                child: GestureDetector(
-                  onTap: (){
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext){
-                        return BidList();
-                      },
-                    );
+          ),
+          // See Others Bid
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext) {
+                    return BidList();
                   },
-                  child: Text(
-                    'See Others Bid',
-                    textAlign: TextAlign.left,
-                  ),
+                );
+              },
+              child: Text(
+                'See Others Bid',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
-                padding: EdgeInsets.fromLTRB(16,0,16,10),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16,0,16,10),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: ' Place Your Bid \$ ',
-                        hintStyle: TextStyle(fontSize: 15.0),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade400),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        focusedBorder:  OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xfff10d76)),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+          ),
+          // Bid Section
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Place Your Bid \$',
+                      hintStyle: TextStyle(fontSize: 15.0),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xfff10d76)),
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Button(
-                    text: 'Bid',
-                    onTap: () {  },
-                  ),
-                  MsgButton(),
-                ],
-              ),
-
+                ),
+                SizedBox(width: 10),
+                Button(
+                  text: 'Bid',
+                  onTap: () {},
+                ),
+                SizedBox(width: 10),
+                MsgButton(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
-
 }

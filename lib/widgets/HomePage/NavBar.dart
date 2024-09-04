@@ -43,12 +43,12 @@ class _NavBar extends State<NavBar>{
             ),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                child: Image.file(
-                  File('/data/user/0/com.example.android_app_project_bookhub/cache/10abb823-7a12-4c68-ad81-f59ec10f8edf/Shaeakh.jpg'),
-                    width: 90,
-                    height: 90,
-                    fit: BoxFit.cover,
-                ),
+                child: Image.network(
+                  "https://cdn.vectorstock.com/i/1000x1000/50/09/user-icon-female-person-symbol-profile-avatar-vector-20715009.webp",
+                  width: 90,
+                  height: 90,
+                  fit: BoxFit.cover,
+                )
               ),
             ),
             decoration: BoxDecoration(

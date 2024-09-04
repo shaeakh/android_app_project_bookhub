@@ -39,7 +39,7 @@ class _HomePage extends State<HomePage> with SingleTickerProviderStateMixin {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Color(0xfff10d76),
+          backgroundColor: Color(0xffc82173),
           bottom: TabBar(
             controller: _tabController,
             tabs: [
