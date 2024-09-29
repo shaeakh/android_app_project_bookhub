@@ -55,7 +55,7 @@ class StatusWiget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${time.toDate().hour}:${time.toDate().minute} . ${DateFormat('dd MMM yyyy').format(time.toDate())}',
+                        DateFormat('HH:mm . dd MMM yyyy').format(time.toDate()),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
